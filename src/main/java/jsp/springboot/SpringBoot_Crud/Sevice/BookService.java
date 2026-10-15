@@ -3,8 +3,6 @@ package jsp.springboot.SpringBoot_Crud.Sevice;
 import java.util.List;
 import java.util.Optional;
 
-import javax.management.relation.RelationNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -41,7 +39,7 @@ public class BookService {
 		Optional<Book> opt = bookRepo.findById(id);
 		ResponseStructure<Book> res = new ResponseStructure<Book>();
 		if(opt.isEmpty()) 
-			throw new IdNotFoundException("Book with id: "+id+" not available.");
+			throw new IdNotFoundException("Record with id: "+id+" not available.");
 		
 		res.setStatusCode(HttpStatus.OK.value());
 		res.setMessage("Book with id: "+id+" fetched successfully.");
@@ -53,7 +51,7 @@ public class BookService {
 		List<Book> books = bookRepo.findAll();
 		ResponseStructure<List<Book>> res = new ResponseStructure<List<Book>>();
 		if(books.isEmpty())
-			throw new RecordNotFoundException("No Data To Fetch.");
+			throw new RecordNotFoundException("No record available to fetch");
 		
 		res.setStatusCode(HttpStatus.OK.value());
 		res.setMessage("Record fetched successfully");
@@ -98,52 +96,30 @@ public class BookService {
 		return res;
 	}
 	
+	public ResponseStructure<String> deleteAll(){
+		ResponseStructure<String> res = new ResponseStructure<String>();
+		
+		List<Book> books = bookRepo.findAll();
+		if(books.isEmpty()) 
+			throw new RecordNotFoundException("No records found to delete");
+		
+		res.setStatusCode(HttpStatus.OK.value());
+		res.setMessage("Records deleted successfully");
+		
+		return res;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public ResponseStructure<List<Book>> findByAuthor(String author){
+		ResponseStructure<List<Book>> res = new ResponseStructure<List<Book>>();
+		List<Book> books = bookRepo.findByAuthor(author);
+		
+		if(books.isEmpty())
+			throw new RecordNotFoundException("No records with author: " +author+" found");
+		
+		res.setStatusCode(HttpStatus.OK.value());
+		res.setMessage("Record with author: " +author+" found");
+		res.setData(books);
+		
+		return res;
+ 	}	
 }
