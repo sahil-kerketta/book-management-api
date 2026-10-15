@@ -8,7 +8,7 @@ A RESTful API project built using **Java and Spring Boot** to demonstrate CRUD (
 - **Read** – Retrieve all records or fetch a specific record by ID.
 - **Update** – Modify existing records.
 - **Delete** – Remove records from the database.
-- **Layered Architecture** – Separation of responsibilities across Controller, Service, Repository, and Model layers.
+- **Layered Architecture** – Separation of responsibilities across Controller, Service, Repository, and Entity/Model layers.
 - **RESTful APIs** – Handle HTTP requests using standard HTTP methods.
 - **Database Integration** – Persist and manage data using Spring Data JPA.
 - **Exception Handling** – Handle invalid requests and record-related errors.
@@ -148,6 +148,8 @@ This project demonstrates practical understanding of:
 - Building RESTful APIs using Spring Boot.
 - Implementing CRUD operations.
 - Understanding layered architecture and separation of concerns.
+- Add DTOs for request and response handling.
+- Implement global exception handling.
 - Using Spring Data JPA for database interactions.
 - Mapping HTTP methods to application operations.
 - Testing APIs using Postman.
@@ -155,8 +157,7 @@ This project demonstrates practical understanding of:
 
 ## 🔮 Future Enhancements
 
-- Add DTOs for request and response handling.
-- Implement global exception handling.
+
 - Add input validation.
 - Introduce pagination and sorting.
 - Add unit and integration tests.
@@ -170,5 +171,5 @@ This project demonstrates practical understanding of:
 GitHub: [Your GitHub Profile](https://github.com/sahil-kerketta)
 
 ---
-This project still in progress..........
+
 If you find this project useful for learning Spring Boot and REST API development, feel free to explore the code and build upon it.
